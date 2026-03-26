@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Historia Interactiva - Bertha</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+
+  /* FONDO REAL */
+background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');  background-size: cover;
+  background-position: center;
+}
+
+/* OSCURECER FONDO (EFECTO PRO) */
+body::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.card{
+  position: relative;
+  z-index: 1;
+  width:420px;
+  background: rgba(30,30,30,0.9);
+  padding:25px;
+  border-radius:10px;
+  text-align:center;
+  backdrop-filter: blur(5px);
+}
+
+button{
+  margin:8px;
+  padding:10px 15px;
+  border:none;
+  border-radius:6px;
+  background:#4CAF50;
+  color:white;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#66bb6a;
+}
+
+.bad{
+  background:#d9534f;
+}
+
+.bad:hover{
+  background:#e57373;
+  
+}
+</style>
+
+</head>
+<body>
+
+<div class="card" id="app"></div>
+
+<script>
+
+const app = document.getElementById("app");
+
+function inicio(){
+  app.innerHTML = `
+    <h2>Historia Interactiva</h2>
+    <p>Estás en Colombia hace muchos años...</p>
+    <button onclick="contexto()">Comenzar</button>
+  `;
+}
+
+function contexto(){
+  app.innerHTML = `
+    <p>En esta época, muchas mujeres no tenían acceso a la educación.</p>
+    <button onclick="decision1()">Continuar</button>
+  `;
+}
+
+function decision1(){
+  app.innerHTML = `
+    <p>Eres joven... ¿qué decides?</p>
+    <button onclick="resultadoBueno1()">Estudiar</button>
+    <button class="bad" onclick="resultadoMalo1()">No estudiar</button>
+  `;
+}
+
+function resultadoBueno1(){
+  app.innerHTML = `
+    <p>Empiezas a aprender y descubres nuevas oportunidades.</p>
+    <button onclick="decision2()">Seguir</button>
+  `;
+}
+
+function resultadoMalo1(){
+  app.innerHTML = `
+    <p>❌ Sin educación, tus oportunidades son muy limitadas.</p>
+    <button onclick="inicio()">Volver al inicio</button>
+  `;
+}
+
+function decision2(){
+  app.innerHTML = `
+    <p>Ahora tienes conocimientos... ¿qué haces?</p>
+    <button onclick="resultadoBueno2()">Enseñar</button>
+    <button class="bad" onclick="resultadoMalo2()">No hacer nada</button>
+  `;
+}
+
+function resultadoBueno2(){
+  app.innerHTML = `
+    <p>Ayudas a muchas personas. Generas un cambio real.</p>
+    <button onclick="historiaReal()">Continuar</button>
+  `;
+}
+
+function resultadoMalo2(){
+  app.innerHTML = `
+    <p>❌ No compartir el conocimiento limita el progreso.</p>
+    <button onclick="inicio()">Volver al inicio</button>
+  `;
+}
+
+function historiaReal(){
+  app.innerHTML = `
+    <h3>Historia real</h3>
+    <p>Bertha Hernández de Ospina fue una líder colombiana que impulsó la educación y los derechos de las mujeres.</p>
+    <button onclick="aportes()">Ver aportes</button>
+  `;
+}
+
+function aportes(){
+  app.innerHTML = `
+    <h3>Sus aportes</h3>
+    <p>✔ Impulsó la educación</p>
+    <p>✔ Apoyó el voto femenino</p>
+    <p>✔ Fue líder política</p>
+    <button onclick="presentacionFinal()">Ver exposición final</button>
+  `;
+}
+
+function presentacionFinal(){
+  app.innerHTML = `
+    <h2>Exposición Final</h2>
+
+    <div style="width:100%; height:300px; margin-top:10px;">
+      <iframe
+        src="https://www.canva.com/design/DAHE-xdzlSI/Qnw1r9N2fTRMEGdGCJ8N9Q/view?embed"
+        style="width:100%; height:100%; border:none; border-radius:8px;"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <button onclick="inicio()">Reiniciar</button>
+  `;
+}
+
+inicio();
+
+</script>
+
+</body>
+</html>ba
